@@ -1,0 +1,24 @@
+# Щоденне оновлення вкладки «Новини» на тестовій копії (власник 26.11.2026).
+# Кладеться в репозиторій ftup-library-test скриптом tools/deploy_test_pages.sh; джерело — проєкт бібліотеки.
+name: Новини
+on:
+  schedule:
+    - cron: '0 4 * * *'   # 06:00 за Києвом (зима)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: news
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Зібрати новини
+        run: NEWS_CFG=.github/news/news-sources.json NEWS_LIB=data/library.json python3 -I .github/news/news_fetch.py
+      - name: Опублікувати, якщо змінилось
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898299+github-actions[bot]@users.noreply.github.com'
+          git add data/library.json index.html
+          git diff --cached --quiet || { git commit -q -m "Новини $(date +%F)"; git push -q; }

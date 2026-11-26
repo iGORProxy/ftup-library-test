@@ -1,0 +1,219 @@
+{
+ "_про": "Джерела й фільтр вкладки «Новини» (власник 26.11.2026: «робимо RSS, нове меню після добірок»). Збирає tools/news_fetch.py → data/news.json. Журнали — через Europe PMC за ISSN (сайти Wiley, T&F, Sage не віддають RSS скрипту); RSS — напряму. Рівень фільтра: pt — журнал дитячої ФТ/реабілітації, береться все; peds — дитячий журнал, слова ФТ/руху мають бути в назві (motor_title); rehab — дорослий/загальний журнал ФТ, потрібні слова про дітей; query — пошук у всіх журналах.",
+ "days": 60,
+ "max": 400,
+ "journals": [
+  {
+   "name": "Pediatric Physical Therapy",
+   "issn": "0898-5669",
+   "level": "pt"
+  },
+  {
+   "name": "Physical & Occupational Therapy in Pediatrics",
+   "issn": "0194-2638",
+   "level": "pt"
+  },
+  {
+   "name": "Journal of Pediatric Rehabilitation Medicine",
+   "issn": "1874-5393",
+   "level": "pt"
+  },
+  {
+   "name": "Developmental Neurorehabilitation",
+   "issn": "1751-8423",
+   "level": "pt"
+  },
+  {
+   "name": "Developmental Medicine & Child Neurology",
+   "issn": "0012-1622",
+   "level": "peds"
+  },
+  {
+   "name": "Child: Care, Health and Development",
+   "issn": "0305-1862",
+   "level": "peds"
+  },
+  {
+   "name": "Frontiers in Pediatrics",
+   "issn": "2296-2360",
+   "level": "peds"
+  },
+  {
+   "name": "BMC Pediatrics",
+   "issn": "1471-2431",
+   "level": "peds"
+  },
+  {
+   "name": "Children (MDPI)",
+   "issn": "2227-9067",
+   "level": "peds"
+  },
+  {
+   "name": "Early Human Development",
+   "issn": "0378-3782",
+   "level": "peds"
+  },
+  {
+   "name": "Physical Therapy (PTJ)",
+   "issn": "0031-9023",
+   "level": "rehab"
+  },
+  {
+   "name": "Physiotherapy",
+   "issn": "0031-9406",
+   "level": "rehab"
+  },
+  {
+   "name": "Archives of Physical Medicine and Rehabilitation",
+   "issn": "0003-9993",
+   "level": "rehab"
+  },
+  {
+   "name": "Disability and Rehabilitation",
+   "issn": "0963-8288",
+   "level": "rehab"
+  },
+  {
+   "name": "Clinical Rehabilitation",
+   "issn": "0269-2155",
+   "level": "rehab"
+  },
+  {
+   "name": "BMJ Open Sport & Exercise Medicine",
+   "issn": "2055-7647",
+   "level": "rehab"
+  }
+ ],
+ "queries": [
+  {
+   "name": "Огляди й настанови (усі журнали)",
+   "level": "query",
+   "query": "(TITLE:physiotherap* OR TITLE:\"physical therapy\" OR TITLE:rehabilitation OR TITLE:\"motor intervention\" OR TITLE:\"early intervention\" OR TITLE:exercise) AND (TITLE:child* OR TITLE:infant* OR TITLE:paediatric OR TITLE:pediatric OR TITLE:preterm OR TITLE:adolescen* OR TITLE:\"cerebral palsy\") AND (PUB_TYPE:\"review\" OR PUB_TYPE:\"systematic review\" OR PUB_TYPE:\"guideline\" OR PUB_TYPE:\"practice guideline\" OR TITLE:\"systematic review\" OR TITLE:guideline OR TITLE:consensus)"
+  }
+ ],
+ "rss": [
+  {
+   "name": "Journal of Physiotherapy",
+   "url": "https://rss.sciencedirect.com/publication/science/18369553",
+   "level": "rehab"
+  }
+ ],
+ "child": "\\b(child|children|childhood|paediatric|pediatric|infan|neonat|newborn|preterm|premature|toddler|adolescen|youth|school-?age|kids?|boys?|girls?|cerebral palsy|juvenile)",
+ "motor": "(physiotherap|physical therap|rehabilitat|exercis|training|motor|gait|walk|mobility|posture|postural|balance|strength|physical activity|fitness|sport|spastic|cerebral palsy|hypoton|orthos|orthotic|splint|wheelchair|positioning|early intervention|contracture|scolio|torticollis|plagioceph|hip surveillance|hip displacement|airway clearance|chest physio|constraint-induced|bimanual|general movements|prechtl|hammersmith|gmfcs|gmfm|neuromuscular|muscular dystroph|duchenne|spinal muscular atrophy|brachial plexus|developmental coordination|\\bdcd\\b|coordination|participation|function|disabilit|pain|clubfoot|developmental delay|motor delay)",
+ "exclude": "(helmet|\\brats?\\b|\\bmice\\b|\\bmouse\\b|murine|zebrafish|in vitro|erratum|correction to|retraction|corrigendum|withdrawn)",
+ "tags": [
+  [
+   "ЦП",
+   "cerebral palsy|spastic|\\bcp\\b"
+  ],
+  [
+   "Передчасно народжені",
+   "preterm|premature|very low birth|extremely low birth|born very|born extremely"
+  ],
+  [
+   "Новонароджені й ВІТН",
+   "neonat|newborn|nicu|neonatal intensive"
+  ],
+  [
+   "Інсульт",
+   "stroke"
+  ],
+  [
+   "Ранні ознаки й оцінювання",
+   "general movements|prechtl|hammersmith|\\bhine\\b|\\bgma\\b|early detection|early diagnosis"
+  ],
+  [
+   "РАС",
+   "autis"
+  ],
+  [
+   "ДКР (DCD)",
+   "developmental coordination|\\bdcd\\b"
+  ],
+  [
+   "СМА",
+   "spinal muscular atrophy|\\bsma\\b|nusinersen|risdiplam"
+  ],
+  [
+   "Нервово-мʼязові",
+   "neuromuscular|muscular dystroph|duchenne|myopath"
+  ],
+  [
+   "Плечове сплетення",
+   "brachial plexus"
+  ],
+  [
+   "Spina bifida",
+   "spina bifida|myelomening"
+  ],
+  [
+   "Кривошия й плагіоцефалія",
+   "torticollis|plagioceph"
+  ],
+  [
+   "Сколіоз і хребет",
+   "scolio|spine|spinal deform"
+  ],
+  [
+   "Кульшовий суглоб",
+   "\\bhip\\b"
+  ],
+  [
+   "Стопа й хода",
+   "gait|walk|clubfoot|toe.walk|foot"
+  ],
+  [
+   "Верхня кінцівка",
+   "upper limb|upper extremit|\\bhand\\b|bimanual|constraint-induced|\\bcimt\\b|\\bhabit\\b"
+  ],
+  [
+   "Синдром Дауна",
+   "down syndrome|trisomy 21"
+  ],
+  [
+   "Генетичні синдроми",
+   "syndrome|genetic"
+  ],
+  [
+   "Муковісцидоз",
+   "cystic fibrosis"
+  ],
+  [
+   "Дихання",
+   "respirat|airway|asthma|breathing|ventilat"
+  ],
+  [
+   "ЧМТ і струс",
+   "brain injur|concussion"
+  ],
+  [
+   "Біль",
+   "\\bpain"
+  ],
+  [
+   "Фізична активність і спорт",
+   "physical activity|exercise|fitness|sport|sedentary"
+  ],
+  [
+   "Раннє втручання",
+   "early intervention|family-centred|family-centered|parent-delivered|coaching"
+  ],
+  [
+   "Ортези й ТЗР",
+   "orthos|orthotic|splint|wheelchair|assistive|\\bafo\\b|seating|standing frame|power mobility"
+  ],
+  [
+   "Інструменти оцінювання",
+   "reliabil|validity|psychometric|gmfm|gmfcs|\\bpedi\\b|bayley|\\baims\\b|outcome measure"
+  ],
+  [
+   "Онкологія",
+   "cancer|leuk|oncolog|tumou?r"
+  ],
+  [
+   "Телереабілітація",
+   "tele(rehab|health|medicine)|remote|virtual reality|video game|exergam"
+  ]
+ ],
+ "motor_title": "(physiotherap|physical therap|rehabilitat|exercis|motor|gait|walking|mobility|postur|balance|muscle strength|physical activity|physical fitness|sport|spastic|cerebral palsy|hypoton|orthos|orthotic|splint|wheelchair|positioning|early intervention|contracture|scolio|torticollis|plagioceph|hip surveillance|hip displacement|hip dysplasia|airway clearance|chest physio|constraint-induced|bimanual|general movements|prechtl|hammersmith|gmfcs|gmfm|neuromuscular|muscular dystroph|duchenne|spinal muscular atrophy|brachial plexus|developmental coordination|\\bdcd\\b|clubfoot|developmental delay|motor delay|movement behaviou?r|sedentary|arthrogryposis|spina bifida|toe.walk|flat ?foot|kinesio|hydrotherapy|aquatic)"
+}
